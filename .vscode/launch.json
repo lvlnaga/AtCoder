@@ -1,0 +1,46 @@
+{
+  // IntelliSense を使用して利用可能な属性を学べます。
+  // 既存の属性の説明をホバーして表示します。
+  // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "name": "(gdb) Bash on Windows Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        // "program": "${command:extension.vscode-wsl-workspaceFolder}/problem.exe",
+        "program": "${workspaceFolder}/problem.exe",
+        "args": [
+            "<",
+            // "${command:extension.vscode-wsl-workspaceFolder}/problem.in"
+            "${workspaceFolder}/problem.in"
+        ],
+        "stopAtEntry": false,
+        "MIMode": "gdb",
+        // "cwd": "${command:extension.vscode-wsl-workspaceFolder}",
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "pipeTransport": {
+            "debuggerPath": "/usr/bin/gdb",
+            // "pipeProgram": "${env:windir}\\system32\\bash.exe",
+            "pipeProgram": "/usr/bin/bash",
+            "pipeArgs": [
+                "-c"
+            ],
+            "pipeCwd": "/"
+        },
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            }
+        ],
+        //"preLaunchTask": "build"
+        // "sourceFileMap": {
+        // "${command:extension.vscode-wsl-workspaceFolder}": "${workspaceFolder}"
+        // },
+    }
+  ]
+}
