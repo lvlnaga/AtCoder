@@ -11,23 +11,43 @@ using mint = modint1000000007;
 
 int main() {
   long long X,A,D,N;
+  ll ans;
   cin >> X >> A >> D >> N;
 
-  //等差数列を計算
-  vector<ll> S(N);
+  //todo Dがマイナスのときも考える
 
-  for (ll i = 0; i < N; i++)
+  //末項を計算
+  ll m = A + D*(N-1);
+
+  if(D < 0)//Dがマイナスのとき、初項と末項をひっくり返して考える
   {
-    S[i] = A + i * D;
+    swap(A,m);//初項と末項をswap
+    D = -1 * D;//Dをプラスにする。
   }
 
+  if (X <= A)//初項よりも小さい時
+  {
+    ans = A - X;
+  }
+  else if(m <= X)//末項よりも大きいとき
+  {
+    ans = X - m;
+  }
+  else
+  {
+    //Xの手前の要素が何項目かを計算
+    ll t = (X - A)/D + 1;
+    ans = min(abs(X- (A+D*(t-1))),abs(X - (A+D*(t))));
+  }
+  
+  cout << ans << endl;
   /*
   for (const auto& e: S)
   {
     cout << e << endl;
   }
   */
-
+  /*
   //Xを+1, -1  した値がSに含まれるかをチェック
   ll X_inc, X_dec;
   X_inc = X_dec = X;
@@ -47,7 +67,7 @@ int main() {
     ans++;
   }
   
+  */
 
-  cout << ans << endl;
   return 0;
 }
