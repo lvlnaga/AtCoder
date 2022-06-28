@@ -12,7 +12,8 @@ using mint = modint1000000007;
 int main() {
   int q;
   cin >> q;
-  vector <int> s;
+  //vector <int> s;
+  multiset <int> s;
   int query,arg1,arg2;
   for (int i = 0; i < q; i++)
   {
@@ -21,33 +22,31 @@ int main() {
     cin >> query;
     if(query == 1){
       cin  >> arg1;
-      s.push_back(arg1);
+      s.insert(arg1);
+
     }else if(query == 2){
       cin >> arg1; //x
       cin >> arg2; //c
 
-      size_t n_count = count(s.begin(),s.end(),arg1);
-      int loop = min(arg2, (int)n_count); //
-
-      auto itr = s.begin();
-      while (itr != s.end())
+      //size_t n_count = count(s.begin(),s.end(),arg1);
+      //int loop = min(arg2, (int)n_count); //
+      
+      for (int i = arg2; i > 0; i--)
       {
-        if((*itr) == arg1)
-        {
-            itr = s.erase(itr);
-            loop --;
-        }
-        else
-        {
-            itr++;
-        }
-        if(loop <= 0){
-          break;
-        }
+        if(s.find(arg1) == s.end()) break;
+        s.erase(s.find(arg1));
+        
       }
+      
+
+
+      /* while ( arg2-- && find(s.begin(), s.end(), arg1) != s.end())
+      {
+        s.erase(find(s.begin(),s.end(),arg1));
+      } */
     }else if(query == 3){
-      int s_max = *max_element(s.begin(), s.end());
-      int s_min = *min_element(s.begin(), s.end());
+      int s_max = *s.rbegin();
+      int s_min = *s.begin();
       
       cout << s_max - s_min << endl;
       
@@ -55,5 +54,5 @@ int main() {
       cout << "error" << endl;
     }
   }
-  return 0;
+  return 0; 
 }
