@@ -10,10 +10,21 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
-  cin >> n;
+  int n,k;
+  cin >> n >> k;
+  vector <int> a(n);
+  vector <int> b(k);
 
-  int ans = 0;
+  rep(i,n) cin >> a[i];
+  rep(i,k) cin >> b[i];
+
+  int max = *max_element(a.begin(),a.end());
+
+  string ans = "No";
+  for (int i = 0; i < k; i++)
+  {
+    if(a[b[i]-1] == max) ans = "Yes";
+  }
 
   cout << ans << endl;
   return 0;
