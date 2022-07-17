@@ -10,16 +10,11 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int a,b,d;
-  cin >> a >> b >> d;
-  
-  double x,y;
-  double theta = d * (acos(-1) / 180);
-  x = a * cos(theta) - b * sin(theta);
-  y = a * sin(theta) + b * cos(theta);
-  //int ans = 0;
+  int n;
+  cin >> n;
 
-  cout << fixed << setprecision(10) << x << ' ' << y << endl;
-  
+  int ans = 0;
+
+  cout << ans << endl;
   return 0;
 }
