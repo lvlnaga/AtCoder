@@ -13,12 +13,12 @@ int main() {
   int n,m;
   
   vector<pair<int,int>> u_v;
-  vector
+  
   cin >> n >> m;
 
   for (int i = 0; i < m; i++)
   {
-    
+    cout << "a" << endl;
   }
   
 
