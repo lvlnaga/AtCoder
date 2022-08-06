@@ -10,8 +10,18 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
-  cin >> n;
+  int n,m;
+  
+  vector<pair<int,int>> u_v;
+  vector
+  cin >> n >> m;
+
+  for (int i = 0; i < m; i++)
+  {
+    
+  }
+  
+
 
   int ans = 0;
 
