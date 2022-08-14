@@ -10,11 +10,11 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
-  cin >> n;
+  int a, b;
+  string str = "atcoder";
+  cin >> a >> b;
+  str = str.substr(a-1,b-a+1);
 
-  int ans = 0;
-
-  cout << ans << endl;
+  cout << str << endl;
   return 0;
-}
+} 
