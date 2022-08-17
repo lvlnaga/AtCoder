@@ -10,8 +10,8 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  string s;
-  cin >> s;
+  int n;
+  cin >> n;
 
   int ans = 0;
 
