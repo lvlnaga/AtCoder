@@ -13,33 +13,44 @@ int main() {
   int n,k;
   cin >> n >> k;
 
-  vector<int> a(n),b(n);
+  vector<int> a(n);
+  vector<vector<int>> b(k);
+
+  //Kで割ったあまりのグループで管理しておく。
+  //そのグループの中でソートはできるっていうこと
+  //グループごとにソート
+  //復元
+  //答えと一致すればYes、一致しなければNo
+
 
   for (int i = 0; i < n; i++)
   {
     cin >> a[i];
-    b[i] = a[i];
+    b[i%k].push_back(a[i]); //Kで割ったあまりのグループで管理
   }
 
-  //bをソートして答えを求める
-  sort(b.begin(),b.end());
+  //aをソートして答えを求める
+  sort(a.begin(),a.end());
 
-  //aをルールに則ってやれる限りソートして見る
-  bool f = true;
-  while (f)
+  //bをグループごとにソート
+  //vector側はお尻からしか取り出せない(pop_back)なので、降順でソートしておく
+  for (int i = 0; i < k; i++)
   {
-    for (int i = 0; i < n-k-1; i++)
-    {
-      f = false;
-        if (a[i] > a[i+k])
-        {
-          swap(a[i],a[i+k]);
-          f = true;
-        }
-    }
+    sort(b[i].rbegin(),b[i].rend());
   }
+  
 
-  if(a == b){
+  //グループわけして、ソートした状態のbを復元
+  //降順にソートしたのでおしりから取り出していく
+  vector<int> c;
+  for (int i = 0; i < n; i++)
+  {
+    c.push_back(b[i%k].back());//お尻のやつを取得
+    b[i%k].pop_back();//おしりのやつを削除
+  }
+  
+
+  if(a == c){
     cout << "Yes" << endl;
   }else{
     cout << "No" << endl;
