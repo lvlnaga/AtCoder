@@ -10,11 +10,36 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
-  cin >> n;
+  int n,m;
+  cin >> n >> m;
+  vector<int> a(m);
+  vector<bool> dp(n,false);
 
-  int ans = 0;
+  for (int i = 0; i < m; i++)
+  {
+    cin >> a[i];
+  }
 
+  dp[0] = true;
+  for (int i = 1; i <= n; i++)
+  {
+    for (int j = 0; j < m; j++)
+    {
+      if ((i-a[j] >= 0) && dp[i-a[j]])
+      {
+        dp[i] = true;
+      }
+    }
+  }
+  
+  string ans = "No";
+
+  if (dp[n])
+  {
+    ans = "Yes";
+  }
+  
   cout << ans << endl;
+
   return 0;
 }
