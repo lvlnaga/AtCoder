@@ -9,12 +9,27 @@ using P = pair<int,int>;
 using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
+//https://atcoder.jp/contests/abc081/tasks/abc081_a
+
 int main() {
-  int n;
-  cin >> n;
+  string s;
+  cin >> s;
 
-  int ans = 0;
+  int counter = 0;
+  
+  if (s[0] == '1')
+  {
+    ++counter;
+  }
+  if (s[1] == '1')
+  {
+    ++counter;
+  }
+  if (s[2] == '1')
+  {
+    ++counter;
+  }
 
-  cout << ans << endl;
+  cout << counter << endl;
   return 0;
 }
