@@ -15,24 +15,35 @@ using P = pair<int,int>;
 using Graph = vector<vector<int>>;
 //using mint = modint1000000007;
 
-//https://atcoder.jp/contests/abc087/tasks/abc087_b
+//https://atcoder.jp/contests/abc175/tasks/abc175_b
 
 int main() {
-  int a,b,c,x;
-  cin >> a >> b >> c >> x;
+  int n;
+  cin >> n;
+  //lを受け取る
+  vector<int> l(n);
+  for (int i = 0; i < n; i++)
+  {
+    cin >> l[i];
+  }
+
+  //sort
+  sort(l.begin(),l.end());
+  
+  //全探索して、a != b, b!=c, c!=a, a + b > c であることが分かればOK
 
   int ans = 0;
 
-  for (int i = 0; i <= a; i++)
+  for (int i = 0; i < n; i++)
   {
-    for (int j = 0; j <= b; j++)
+    for (int j = 0; j < i; j++)
     {
-      for (int k = 0; k <= c; k++)
+      for (int k = 0; k < j; k++)
       {
-        //x と一致する場合 ansをインクリメント
-        int sum = i*500 + j*100 + k*50;
-        if(sum == x)
-          ++ans;
+        if ((l[i] != l[j]) && (l[j] != l[k]) && (l[k] + l[j] > l[i]))
+        {
+          ans++;
+        }
       }
     }
   }
