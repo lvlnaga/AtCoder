@@ -6,53 +6,69 @@
 #include <algorithm>
 #include <functional>  
 #include <set>
+#include <limits.h>
+#include <cmath>
 
+using ll = long long;
+using ll = long long;
 using namespace std;
 
 //https://atcoder.jp/contests/abc067/tasks/abc067_b
 
 int main() {
-  int n;
+  string n;
   cin >> n;
+  ll min_k = LLONG_MAX;
 
-  vector<int> t(n+1);
-  vector<int> x(n+1);
-  vector<int> y(n+1);
-
-  //最初の座標を予め登録(0秒のとき(0,0)にいる)
-  t[0] = x[0] = y[0] = 0;
-
-  for (int i = 1; i <= n; i++)
+  for (int bit = 0; bit < 1<<n.size(); bit++)
   {
-    cin >> t[i] >> x[i] >> y[i];
+    vector<int> remainDigit; //残す桁
+    ll numOfDeleteDigit=0;//消す桁数
+    //残す桁を記憶
+    for (int i = 0; i < (int)n.size(); i++)
+    {
+      if (bit & (1<<i)) //一個ずつbitをずらして残すやつを拾いあつめる
+      { //立っているbitの場合
+        remainDigit.push_back(n[i]-'0'); // s[i]-'0' でchar型をintで格納できる
+      }
+      else
+      {
+        numOfDeleteDigit++;
+      }
+    }
+    
+    if (numOfDeleteDigit == (ll)n.size())
+    {
+      continue; //全消しはスキップ
+    }
+    
+    //数字を復元
+    ll number = 0;
+    for (int i = 0; i < (int)remainDigit.size(); i++)
+    {
+      number += remainDigit[i] * powl(10,(ll)n.size()-i);
+    }
+    
+    //3の倍数になるかチェック
+    if (number % 3 == 0)
+    {
+      if (min_k > numOfDeleteDigit)
+      {
+        min_k = numOfDeleteDigit;
+      }
+    }
   }
   
-  bool is_able = true; //到達可能かどうかフラグ
 
-  //最初から最後の移動までfor分で条件チェック
-  for (int i = 1; i <= n; i++)
+  if (min_k == LLONG_MAX)
   {
-    //条件1: パリティ→経過時間が奇数のときは、 座標を足したときも奇数
-    if ((t[i]  % 2) != (x[i] + y[i]) % 2)
-    {
-      is_able = false;
-    }
-    //条件2: 距離
-    if (abs(t[i]-t[i-1]) < (abs(x[i]-x[i-1]) + abs(y[i]-y[i-1])))
-    {
-      is_able = false;
-    }
-  }
-  
-
-  if (is_able)
-  {
-    cout << "Yes" << endl;
+    cout << -1 << endl;
   }
   else
   {
-    cout << "No" << endl;
+    cout << min_k << endl;
   }
+  
   
   return 0;
 }

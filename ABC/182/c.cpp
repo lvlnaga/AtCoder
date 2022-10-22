@@ -21,20 +21,25 @@ using mint = modint1000000007;
 
 
 int main() {
+  
   string n;
   ll min_k = LLONG_MAX;
-  cin >> n;
+  cin >> n; //文字列として取得
 
-  //bit全探索
+  //桁を逆にする必要があるのでは。
+  reverse(n.begin(),n.end());
+
+  //bit全探索 2進数をforで作る。num= (000...0）~ (111...1)
+  // nが4なら　0000 ... 10000までを試すことになる。
   for (int bit = 0; bit < (1<<n.size()); bit++)
   {
     vector<int> v;
     ll delete_digit=0;
     for (int i = 0; i < (int)n.size(); i++)
     {
-      if (bit & (1<<i))
-      {
-        v.push_back((int)(n[i]-'0'));//残す桁 charをintに変換
+      if (bit & (1<<i))//000...01を順番にシフトしながら何番目のビットが立っているかを探索している
+      {                 //立っているビットは残す桁
+        v.push_back((int)(n[i]-'0'));//残す桁 charをintに変換してvectorへ格納
       }
       else
       {
