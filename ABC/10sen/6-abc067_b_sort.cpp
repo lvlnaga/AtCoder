@@ -5,7 +5,7 @@
 #include <vector>
 #include <queue>
 #include <algorithm>
-#include <functional>  //これが必要
+#include <functional>  
 
 using namespace std;
 //https://atcoder.jp/contests/abc067/tasks/abc067_b
