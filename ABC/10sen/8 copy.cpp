@@ -1,17 +1,13 @@
-#include <iostream>
-#include <string>
-#include <map>
-#include <vector>
-#include <queue>
-#include <algorithm>
-#include <functional>  
-#include <set>
-#include <limits.h>
-
-using ll = long long;
-
+#include <bits/stdc++.h>
 using namespace std;
-
+#include <atcoder/all>
+using namespace atcoder;
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+#define rep1(i, n) for (int i = 1; i < (int)(n + 1); i++)
+using ll = long long;
+using P = pair<int, int>;
+using Graph = vector<vector<int>>;
+using mint = modint1000000007;
 
 
 //https://atcoder.jp/contests/arc096/tasks/arc096_a
@@ -24,9 +20,9 @@ int main() {
 //abピザを全探索する
 //足りない分を個別に買う
 
-
+  int sum = 100;
 //ab購入しうる最大枚数は x,yの大きい方の2倍
-for (ll i = 0; i <= 201010/*max(x,y)*2*/ ; i++)
+for (ll i = 0; i <= max(x,y)*2 ; i++)
 {
   ll tmp_ans = 0;
 
@@ -51,7 +47,7 @@ for (ll i = 0; i <= 201010/*max(x,y)*2*/ ; i++)
   
 }
 
-
+cout << sum << endl;
 
 /*
   //a + b < 2c のときは個別に買うのが良い
