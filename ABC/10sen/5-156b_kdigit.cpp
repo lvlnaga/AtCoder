@@ -9,11 +9,11 @@ using P = pair<int,int>;
 using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
-//https://atcoder.jp/contests/abc083/tasks/abc083_b
+//https://atcoder.jp/contests/abc156/tasks/abc156_b
 
 
-//各桁の和を計算
-int getSumOfDigit(int n){
+/*
+int getNumOfDigit(int n){
   int sum = 0;
 
   while (n > 0)
@@ -24,22 +24,18 @@ int getSumOfDigit(int n){
 
   return(sum);
 }
+*/
 
 int main() {
-  int n,a,b;
-  cin >> n >> a >> b;
+  int n,k;
+  cin >> n >> k;
 
   int ans = 0;
-  for (int i = 0; i <= n; i++)
-  {
-    int sum;
-    sum = getSumOfDigit(i);
 
-    //A <= sum <= Bをチェック
-    if (a <= sum && sum <= b)
-    {
-      ans+=i;
-    }
+  while (n > 0)
+  {
+    n /= k; //k進数のときの一桁右シフト
+    ans++;
   }
   
   cout << ans << endl;
