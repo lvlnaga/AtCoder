@@ -10,11 +10,20 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
+  int n,a;
   cin >> n;
+  cin >> a;
 
-  int ans = 0;
+  // int ans = 0;
+  int tmp = 0;
 
-  cout << ans << endl;
+  tmp = n - (n / 500) * 500;
+
+  if(tmp > a){
+    cout << "No" << endl;
+  }else{
+    cout << "Yes" << endl;
+  }
+ 
   return 0;
 }
