@@ -12,18 +12,28 @@ using mint = modint1000000007;
 int main() {
   int n;
   cin >> n;
+  ll ans = 0;
 
-  int ans = 0;
-
-  if(n%2)
+  for (int i = 1; i <= n; i++)
   {
-    ans = n/2 + 1;
+    if (i % 15 == 0)
+    {
+      continue;
+    }
+    else if (i % 3 == 0)
+    {
+      continue;
+    }
+    else if (i % 5 == 0)
+    {
+      continue;
+    }
+    else
+    {
+      ans += i;
+    }
   }
-  else
-  {
-    ans = n/2;
-  }
-
-  cout << ans << endl; 
+  
+  cout << ans << endl;
   return 0;
 }

@@ -15,15 +15,6 @@ int main() {
 
   int ans = 0;
 
-  if(n%2)
-  {
-    ans = n/2 + 1;
-  }
-  else
-  {
-    ans = n/2;
-  }
-
-  cout << ans << endl; 
+  cout << ans << endl;
   return 0;
 }
