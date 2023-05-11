@@ -10,11 +10,17 @@ using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
 int main() {
-  int n;
-  cin >> n;
+  ll x,i=0;
+  cin >> x;
 
-  int ans = 0;
-
-  cout << ans << endl;
+  ll ans = 100;
+  while(ans < x)
+  {
+    // ans = ans * 1.01;
+    ans = ans + ans / 100;
+    // ans = ((100 * ans) + ans) / 100;
+    i++;
+  }
+  cout << i << endl;
   return 0;
 }
