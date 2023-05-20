@@ -9,12 +9,25 @@ using P = pair<int,int>;
 using Graph = vector<vector<int>>;
 using mint = modint1000000007;
 
+// https://atcoder.jp/contests/abc093/tasks/abc093_b
+
 int main() {
-  int n;
-  cin >> n;
+  int a, b, k;
+  cin >> a >> b >> k;
 
-  int ans = 0;
+  int count_num = b-a+1; //a~bの間にある数
+  // 3-8.. 3,4,5,6,7,8 →　6個
+  int count = 0; 
 
-  cout << ans << endl;
+  for (int i = a; i <= b ; i++)
+  {
+    if (count < k || (count_num - k) <= count )
+    {
+      cout << i << endl;
+    }
+    
+    count++;
+  }
+  
   return 0;
 }
